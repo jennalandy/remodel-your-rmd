@@ -11,27 +11,43 @@ output:
 }
 ```
 
-**R Package Development**
+## R Package Development
 
 - [Writing an R package from scratch - short blog post on setting up packages](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)
 - [R package primer: a minimal tutorial - Writing R packages](https://kbroman.org/pkg_primer/)
 - [R Packages - Hadley Wickham's book for R package development](https://r-pkgs.org/)
+- [Get started with roxygen2 - documentation tutorial](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html)
 
-**Parameterized Rmd Reports**
+## Parameterized Rmd Reports
 
 - [RStudio - Parmeters](https://rmarkdown.rstudio.com/lesson-6.html)
+- [R Markdown: The Definitive Guide - Chapter 15.3: Knitting with parameters](https://bookdown.org/yihui/rmarkdown/params-knit.html)
 
-**Rmd Customizations**
+## Rmd Customizations
 
 - [RStudio - Output Formats](https://rmarkdown.rstudio.com/lesson-9.html)
 - [RStudio - kable for pretty tables](https://rmarkdown.rstudio.com/lesson-7.html)
 - [rmdformats - additional Rmd themes](https://juba.github.io/rmdformats/)
 - [prettydoc - Rmd themes](https://prettydoc.statr.me/themes.html)
-- [[R Markdown: The Definitive Guide - Chapter 3.1: HTML document](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents)
+- [R Markdown: The Definitive Guide - Chapter 3.1: HTML document](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents)
 
 
-**Interactive Plots**
-**Publishing R Markdown Websites with Github Pages**
+## Interactive Plots
 
+- [ggplotly - convert ggplot2 to plotly](https://www.rdocumentation.org/packages/plotly/versions/4.10.0/topics/ggplotly)
+- [plotly - make interactive plots from scratch](https://plotly.com/r/)
+- [leaflet - make interactive maps](https://rstudio.github.io/leaflet/)
+- [R Graph Gallery: Interactive charts - demonstrations of different interactive plotting packages](https://r-graph-gallery.com/interactive-charts.html)
+- [R Graph Gallery: Animation - demonstration of different animation plotting packages](https://r-graph-gallery.com/animation.html)
+
+## Publishing R Markdown Websites with Github Pages
+
+- [Making a web site with R Markdown - includes sharing with GitHub pages](https://psu-psychology.github.io/psy-525-reproducible-research-2020/how_to/make-website-with-rstudio.html)
 - [RStudio - R Markdown Websites](https://rmarkdown.rstudio.com/lesson-13.html)
 - [R Markdown: The Definitive Guide - Chapter 10: Websites](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html)
+- [Pimp my Rmd: Share it online](https://holtzy.github.io/Pimp-my-rmd/#share_it_online)
+
+## Other Cool Things!
+
+- [flexdashboard](https://pkgs.rstudio.com/flexdashboard/)
+

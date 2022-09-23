@@ -3,7 +3,7 @@
     "path": "~/Desktop/remodel-your-rmd/Resources.Rmd",
     "project_path": "Resources.Rmd",
     "type": "r_markdown",
-    "hash": "532888536",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1663944467679.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "11,3",
-        "scrollLine": "0"
+        "cursorPosition": "39,123",
+        "scrollLine": "10"
     },
     "folds": "",
-    "lastKnownWriteTime": 1663944492,
+    "lastKnownWriteTime": 1663945030,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1663944492257,
+    "last_content_update": 1663945030264,
     "read_only": false,
     "read_only_alternatives": []
 }
