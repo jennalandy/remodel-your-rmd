@@ -1,4 +1,5 @@
 name: "RStudio & Rmd Hacks"
+output_dir: "docs"
 navbar:
   title: "RStudio & Rmd Hacks"
   left:

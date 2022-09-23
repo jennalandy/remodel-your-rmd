@@ -12,7 +12,7 @@
 <meta name="author" content="Jenna Landy" />
 
 
-<title>Version 1</title>
+<title>Resources</title>
 
 <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -280,74 +280,36 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Version 1</h1>
+<h1 class="title toc-ignore">Resources</h1>
 <h4 class="author">Jenna Landy</h4>
+<h4 class="date">9/23/2022</h4>
 
 </div>
 
 
-<pre class="r"><code>library(ggplot2)
-library(dplyr)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<pre class="r"><code>head(iris)</code></pre>
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<p>Data manipulation steps:</p>
-<ol style="list-style-type: decimal">
-<li>Convert measurements from centemeters to inches</li>
-<li>Compute two ratio features: ratio of lengths (sepal : petal) and ratio of widths (sepal : petal)</li>
-<li>Create a new feature: circumference of the smallest circle that could circumscribe the flower (using the larger length as the radius).</li>
-</ol>
-<pre class="r"><code>iris[,1:4] &lt;- iris[,1:4]/2.54
-iris$Length.Ratio &lt;- iris$Sepal.Length/iris$Petal.Length
-iris$Width.Ratio &lt;- iris$Sepal.Width/iris$Petal.Width
-
-r &lt;- iris$Sepal.Length*(iris$Sepal.Length &gt; iris$Petal.Length) + 
-     iris$Petal.Length*(iris$Petal.Length &gt;= iris$Sepal.Length)
-iris$Circumference &lt;- 2*pi*r</code></pre>
-<pre class="r"><code>head(iris)</code></pre>
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Length.Ratio Width.Ratio
-## 1     2.007874    1.377953    0.5511811  0.07874016  setosa     3.642857       17.50
-## 2     1.929134    1.181102    0.5511811  0.07874016  setosa     3.500000       15.00
-## 3     1.850394    1.259843    0.5118110  0.07874016  setosa     3.615385       16.00
-## 4     1.811024    1.220472    0.5905512  0.07874016  setosa     3.066667       15.50
-## 5     1.968504    1.417323    0.5511811  0.07874016  setosa     3.571429       18.00
-## 6     2.125984    1.535433    0.6692913  0.15748031  setosa     3.176471        9.75
-##   Circumference
-## 1      12.61584
-## 2      12.12111
-## 3      11.62637
-## 4      11.37900
-## 5      12.36848
-## 6      13.35795</code></pre>
-<p>Pairs plot of all variables</p>
-<pre class="r"><code>pairs(iris)</code></pre>
-<p><img src="Version1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Plot of circumference and length ratio by species</p>
-<pre class="r"><code>iris %&gt;% ggplot(aes(
-  x = Circumference, 
-  y = Length.Ratio, 
-  color = Species
-)) +
-  geom_point() +
-  theme_classic() +
-  theme(
-    legend.position = &#39;top&#39;,
-    legend.justification = &#39;left&#39;
-  )</code></pre>
-<p><img src="Version1_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><strong>R Package Development</strong></p>
+<ul>
+<li><a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Writing an R package from scratch - short blog post on setting up packages</a></li>
+<li><a href="https://kbroman.org/pkg_primer/">R package primer: a minimal tutorial - Writing R packages</a></li>
+<li><a href="https://r-pkgs.org/">R Packages - Hadley Wickham’s book for R package development</a></li>
+</ul>
+<p><strong>Parameterized Rmd Reports</strong></p>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/lesson-6.html">RStudio - Parmeters</a></li>
+</ul>
+<p><strong>Rmd Customizations</strong></p>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/lesson-9.html">RStudio - Output Formats</a></li>
+<li><a href="https://rmarkdown.rstudio.com/lesson-7.html">RStudio - kable for pretty tables</a></li>
+<li><a href="https://juba.github.io/rmdformats/">rmdformats - additional Rmd themes</a></li>
+<li><a href="https://prettydoc.statr.me/themes.html">prettydoc - Rmd themes</a></li>
+<li>[<a href="https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents">R Markdown: The Definitive Guide - Chapter 3.1: HTML document</a></li>
+</ul>
+<p><strong>Interactive Plots</strong> <strong>Publishing R Markdown Websites with Github Pages</strong></p>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/lesson-13.html">RStudio - R Markdown Websites</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R Markdown: The Definitive Guide - Chapter 10: Websites</a></li>
+</ul>
 
 
 

@@ -5,26 +5,27 @@ date: "9/23/2022"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+**R Package Development**
 
-## R Markdown
+- [Writing an R package from scratch - short blog post on setting up packages](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)
+- [R package primer: a minimal tutorial - Writing R packages](https://kbroman.org/pkg_primer/)
+- [R Packages - Hadley Wickham's book for R package development](https://r-pkgs.org/)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+**Parameterized Rmd Reports**
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+- [RStudio - Parmeters](https://rmarkdown.rstudio.com/lesson-6.html)
 
-```{r cars}
-summary(cars)
-```
+**Rmd Customizations**
 
-## Including Plots
+- [RStudio - Output Formats](https://rmarkdown.rstudio.com/lesson-9.html)
+- [RStudio - kable for pretty tables](https://rmarkdown.rstudio.com/lesson-7.html)
+- [rmdformats - additional Rmd themes](https://juba.github.io/rmdformats/)
+- [prettydoc - Rmd themes](https://prettydoc.statr.me/themes.html)
+- [[R Markdown: The Definitive Guide - Chapter 3.1: HTML document](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents)
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+**Interactive Plots**
+**Publishing R Markdown Websites with Github Pages**
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+- [RStudio - R Markdown Websites](https://rmarkdown.rstudio.com/lesson-13.html)
+- [R Markdown: The Definitive Guide - Chapter 10: Websites](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html)
