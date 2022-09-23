@@ -1,0 +1,27 @@
+{
+    "id": "06F1D105",
+    "path": "~/Desktop/remodel-your-rmd/index.Rmd",
+    "project_path": "index.Rmd",
+    "type": "r_markdown",
+    "hash": "3350383484",
+    "contents": "",
+    "dirty": false,
+    "created": 1663867303244.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "28,32",
+        "scrollLine": "8",
+        "last_setup_crc32": "100C578Fc4e2d899"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1663940271,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1663940271040,
+    "read_only": false,
+    "read_only_alternatives": []
+}

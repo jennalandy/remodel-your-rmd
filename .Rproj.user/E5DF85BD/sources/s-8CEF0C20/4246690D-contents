@@ -1,0 +1,97 @@
+---
+title: "Version 3 : Parameterize"
+author: "Jenna Landy"
+output: html_document
+params:
+  package_location: 
+    label: "Path to Iris Project Package:"
+    value: "../irisproject/"
+    input: text
+  convert_cm: 
+    label: "Convert Centimeters to Inches?"
+    value: TRUE
+  plot_pairs_of: 
+    label: "Variables to Include in Pairs Plot (comma separated):"
+    value: "Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Length.Ratio, Width.Ratio, Circumference, Species"
+    input: text
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# use install.packages FIRST TIME ONLY
+update.packages(
+  params$package_location,
+  repos=NULL,
+  type="source"
+)
+
+library(irisproject)
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+head(iris)
+```
+
+Data manipulation steps:
+
+`r if(params$convert_cm) {"- Convert measurements from centemeters to inches"}`
+- Compute two ratio features: ratio of lengths (sepal : petal) and ratio of widths (sepal : petal)
+- Create a new feature: circumference of the smallest circle that could circumscribe the flower (using the larger length as the radius).
+
+```{r}
+if (params$convert_cm) {
+  iris <- iris %>%
+  convert_measurements(1:4)
+}
+iris <- iris %>%
+  compute_ratios() %>%
+  compute_circumference()
+```
+
+```{r}
+head(iris)
+```
+
+Pairs plot of select variables
+
+```{r}
+plot_pairs_of <- strsplit(params$plot_pairs_of, ",")[[1]] %>% trimws()
+```
+
+```{r results="asis", echo= FALSE}
+cat(knitr::asis_output("Variables included:\n\n"))
+for (var in plot_pairs_of) {
+  cat(knitr::asis_output(paste0(
+    "- ",
+    var,
+    "\n"
+  )))
+}
+```
+
+```{r}
+pairs(iris[,plot_pairs_of])
+```
+
+Plot of circumference and length ratio by species
+
+```{r}
+iris %>% ggplot(aes(
+  x = Circumference, 
+  y = Length.Ratio, 
+  color = Species
+)) +
+  geom_point() +
+  theme_classic() +
+  theme(
+    legend.position = 'top',
+    legend.justification = 'left'
+  )
+```
+
+

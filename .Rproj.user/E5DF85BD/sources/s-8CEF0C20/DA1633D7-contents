@@ -1,0 +1,71 @@
+---
+title: "Version 2: R Package Development"
+author: "Jenna Landy"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# use install.packages FIRST TIME ONLY
+update.packages(
+  "../irisproject/",
+  repos=NULL,
+  type="source"
+)
+
+library(irisproject)
+library(dplyr)
+library(ggplot2)
+```
+
+
+```{r}
+head(iris)
+```
+
+
+Data manipulation steps:
+
+1. Convert measurements from centemeters to inches
+2. Compute two ratio features: ratio of lengths (sepal : petal) and ratio of widths (sepal : petal)
+3. Create a new feature: circumference of the smallest circle that could circumscribe the flower (using the larger length as the radius).
+
+```{r}
+iris <- iris %>%
+  convert_measurements(1:4) %>%
+  compute_ratios() %>%
+  compute_circumference()
+```
+
+```{r}
+head(iris)
+```
+
+Pairs plot of all variables
+
+```{r}
+pairs(iris)
+```
+
+Plot of circumference and length ratio by species
+
+```{r}
+iris %>% ggplot(aes(
+  x = Circumference, 
+  y = Length.Ratio, 
+  color = Species
+)) +
+  geom_point() +
+  theme_classic() +
+  theme(
+    legend.position = 'top',
+    legend.justification = 'left'
+  )
+```
+
+
+
+

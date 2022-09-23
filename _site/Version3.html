@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Jenna Landy" />
+
+
+<title>Version 3 : Parameterize</title>
+
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">RStudio & Rmd Hacks</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="Version1.html">Version 1</a>
+</li>
+<li>
+  <a href="Version2.html">Version 2</a>
+</li>
+<li>
+  <a href="Version3.html">Version 3</a>
+</li>
+<li>
+  <a href="Version4.html">Version 4</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Version 3 : Parameterize</h1>
+<h4 class="author">Jenna Landy</h4>
+
+</div>
+
+
+<pre class="r"><code># use install.packages FIRST TIME ONLY
+update.packages(
+  params$package_location,
+  repos=NULL,
+  type=&quot;source&quot;
+)
+
+library(irisproject)
+library(dplyr)
+library(ggplot2)</code></pre>
+<pre class="r"><code>head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Length.Ratio
+## 1    0.3345063   0.2295631   0.09182526  0.01311789  setosa     3.642857
+## 2    0.3213884   0.1967684   0.09182526  0.01311789  setosa     3.500000
+## 3    0.3082705   0.2098863   0.08526631  0.01311789  setosa     3.615385
+## 4    0.3017116   0.2033274   0.09838420  0.01311789  setosa     3.066667
+## 5    0.3279473   0.2361221   0.09182526  0.01311789  setosa     3.571429
+## 6    0.3541831   0.2557989   0.11150210  0.02623579  setosa     3.176471
+##   Width.Ratio Circumference
+## 1       17.50     1.0508825
+## 2       15.00     1.0096714
+## 3       16.00     0.9684604
+## 4       15.50     0.9478548
+## 5       18.00     1.0302770
+## 6        9.75     1.1126991</code></pre>
+<p>Data manipulation steps:</p>
+<ul>
+<li>Convert measurements from centemeters to inches</li>
+<li>Compute two ratio features: ratio of lengths (sepal : petal) and ratio of widths (sepal : petal)</li>
+<li>Create a new feature: circumference of the smallest circle that could circumscribe the flower (using the larger length as the radius).</li>
+</ul>
+<pre class="r"><code>if (params$convert_cm) {
+  iris &lt;- iris %&gt;%
+  convert_measurements(1:4)
+}
+iris &lt;- iris %&gt;%
+  compute_ratios() %&gt;%
+  compute_circumference()</code></pre>
+<pre class="r"><code>head(iris)</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Length.Ratio
+## 1    0.1365332  0.09369924   0.03747970 0.005354242  setosa     3.642857
+## 2    0.1311789  0.08031364   0.03747970 0.005354242  setosa     3.500000
+## 3    0.1258247  0.08566788   0.03480258 0.005354242  setosa     3.615385
+## 4    0.1231476  0.08299076   0.04015682 0.005354242  setosa     3.066667
+## 5    0.1338561  0.09637636   0.03747970 0.005354242  setosa     3.571429
+## 6    0.1445645  0.10440773   0.04551106 0.010708485  setosa     3.176471
+##   Width.Ratio Circumference
+## 1       17.50     0.4289316
+## 2       15.00     0.4121108
+## 3       16.00     0.3952899
+## 4       15.50     0.3868795
+## 5       18.00     0.4205212
+## 6        9.75     0.4541629</code></pre>
+<p>Pairs plot of select variables</p>
+<pre class="r"><code>plot_pairs_of &lt;- strsplit(params$plot_pairs_of, &quot;,&quot;)[[1]] %&gt;% trimws()</code></pre>
+<p>Variables included:</p>
+<ul>
+<li>Sepal.Length</li>
+<li>Sepal.Width</li>
+<li>Petal.Length</li>
+<li>Petal.Width</li>
+<li>Length.Ratio</li>
+<li>Width.Ratio</li>
+<li>Circumference</li>
+<li>Species</li>
+</ul>
+<pre class="r"><code>pairs(iris[,plot_pairs_of])</code></pre>
+<p><img src="Version3_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Plot of circumference and length ratio by species</p>
+<pre class="r"><code>iris %&gt;% ggplot(aes(
+  x = Circumference, 
+  y = Length.Ratio, 
+  color = Species
+)) +
+  geom_point() +
+  theme_classic() +
+  theme(
+    legend.position = &#39;top&#39;,
+    legend.justification = &#39;left&#39;
+  )</code></pre>
+<p><img src="Version3_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+---
+title: "Resources"
+author: "Jenna Landy"
+date: "9/23/2022"
+output: html_document
+---
+
+**R Package Development**
+
+- [Writing an R package from scratch - short blog post on setting up packages](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)
+- [R package primer: a minimal tutorial - Writing R packages](https://kbroman.org/pkg_primer/)
+- [R Packages - Hadley Wickham's book for R package development](https://r-pkgs.org/)
+
+**Parameterized Rmd Reports**
+
+- [RStudio - Parmeters](https://rmarkdown.rstudio.com/lesson-6.html)
+
+**Rmd Customizations**
+
+- [RStudio - Output Formats](https://rmarkdown.rstudio.com/lesson-9.html)
+- [RStudio - kable for pretty tables](https://rmarkdown.rstudio.com/lesson-7.html)
+- [rmdformats - additional Rmd themes](https://juba.github.io/rmdformats/)
+- [prettydoc - Rmd themes](https://prettydoc.statr.me/themes.html)
+- [[R Markdown: The Definitive Guide - Chapter 3.1: HTML document](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents)
+
+
+**Interactive Plots**
+**Publishing R Markdown Websites with Github Pages**
+
+- [RStudio - R Markdown Websites](https://rmarkdown.rstudio.com/lesson-13.html)
+- [R Markdown: The Definitive Guide - Chapter 10: Websites](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html)

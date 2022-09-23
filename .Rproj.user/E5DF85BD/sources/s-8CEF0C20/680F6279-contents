@@ -1,0 +1,67 @@
+---
+title: "Version 1"
+author: "Jenna Landy"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+head(iris)
+```
+
+
+Data manipulation steps:
+
+1. Convert measurements from centemeters to inches
+2. Compute two ratio features: ratio of lengths (sepal : petal) and ratio of widths (sepal : petal)
+3. Create a new feature: circumference of the smallest circle that could circumscribe the flower (using the larger length as the radius).
+
+```{r}
+iris[,1:4] <- iris[,1:4]/2.54
+iris$Length.Ratio <- iris$Sepal.Length/iris$Petal.Length
+iris$Width.Ratio <- iris$Sepal.Width/iris$Petal.Width
+
+r <- iris$Sepal.Length*(iris$Sepal.Length > iris$Petal.Length) + 
+     iris$Petal.Length*(iris$Petal.Length >= iris$Sepal.Length)
+iris$Circumference <- 2*pi*r
+```
+
+```{r}
+head(iris)
+```
+
+Pairs plot of all variables
+
+```{r}
+pairs(iris)
+```
+
+Plot of circumference and length ratio by species
+
+```{r}
+iris %>% ggplot(aes(
+  x = Circumference, 
+  y = Length.Ratio, 
+  color = Species
+)) +
+  geom_point() +
+  theme_classic() +
+  theme(
+    legend.position = 'top',
+    legend.justification = 'left'
+  )
+```
+
+
+
+
+
+
+

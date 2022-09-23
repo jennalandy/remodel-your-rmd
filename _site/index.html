@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
+
+        <meta name="author" content="Jenna Landy" />
+    
+    
+    <title>Remodel Your Rmd</title>
+
+        <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+        <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="site_libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="site_libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script src="site_libs/navigation-1.1/tabsets.js"></script>
+        <link href="site_libs/robobook-0.1/robobook.css" rel="stylesheet" />
+        <link href="site_libs/robobook-0.1/robobook_fonts_embed.css" rel="stylesheet" />
+        <script src="site_libs/robobook-0.1/robobook.js"></script>
+    
+    
+        <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          background-color: #ffffff;
+          color: #a0a0a0;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+      div.sourceCode
+        { color: #1f1c1b; background-color: #ffffff; }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      code span { color: #1f1c1b; } /* Normal */
+      code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+      code span.an { color: #ca60ca; } /* Annotation */
+      code span.at { color: #0057ae; } /* Attribute */
+      code span.bn { color: #b08000; } /* BaseN */
+      code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+      code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #924c9d; } /* Char */
+      code span.cn { color: #aa5500; } /* Constant */
+      code span.co { color: #898887; } /* Comment */
+      code span.cv { color: #0095ff; } /* CommentVar */
+      code span.do { color: #607880; } /* Documentation */
+      code span.dt { color: #0057ae; } /* DataType */
+      code span.dv { color: #b08000; } /* DecVal */
+      code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+      code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+      code span.fl { color: #b08000; } /* Float */
+      code span.fu { color: #644a9b; } /* Function */
+      code span.im { color: #ff5500; } /* Import */
+      code span.in { color: #b08000; } /* Information */
+      code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+      code span.op { color: #1f1c1b; } /* Operator */
+      code span.ot { color: #006e28; } /* Other */
+      code span.pp { color: #006e28; } /* Preprocessor */
+      code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+      code span.sc { color: #3daee9; } /* SpecialChar */
+      code span.ss { color: #ff5500; } /* SpecialString */
+      code span.st { color: #bf0303; } /* String */
+      code span.va { color: #0057ae; } /* Variable */
+      code span.vs { color: #bf0303; } /* VerbatimString */
+      code span.wa { color: #bf0303; } /* Warning */
+    </style>
+    
+    
+    <!-- tabsets -->
+    <script>
+      $(document).ready(function () {
+	  window.buildTabsets("toc");
+      });
+      $(document).ready(function () {
+	  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+	      $(this).parent().toggleClass('nav-tabs-open')
+	  });
+      });
+    </script>
+
+    <!-- code folding -->
+    
+    <!-- code download -->
+    
+    <!-- tabsets dropdown -->
+
+    <style type="text/css">
+      .tabset-dropdown > .nav-tabs {
+	  display: inline-table;
+	  max-height: 500px;
+	  min-height: 44px;
+	  overflow-y: auto;
+	  background: white;
+	  border: 1px solid #ddd;
+	  border-radius: 4px;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+	  content: "&#xe258;";
+	  border: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active {
+	  display: block;
+      }
+
+      .tabset-dropdown > .nav-tabs > li.active a {
+  	  padding: 0 15px !important;
+      }
+
+      .tabset-dropdown > .nav-tabs > li > a,
+      .tabset-dropdown > .nav-tabs > li > a:focus,
+      .tabset-dropdown > .nav-tabs > li > a:hover {
+	  border: none;
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: transparent;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+	  display: block;
+	  float: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li {
+	  display: none;
+	  margin-left: 0 !important;
+      }
+    </style>
+    
+</head>
+
+<body class="preload">
+
+   	
+            <!-- robobook start -->   
+   <div class="book with-summary">
+      <div class="book-summary">
+        <ul>
+          <li class="title">Remodel Your Rmd</li>
+          <li class="divider"></li>
+        </ul>
+        <nav role="navigation" id="toc">
+          <ul>
+          <li><a href="#version-1-your-basic-rmd">Version 1: Your Basic Rmd</a></li>
+          <li><a href="#r-package-development">R Package Development</a>
+          <ul>
+          <li><a href="#basic-steps">Basic Steps</a></li>
+          <li><a href="#version-2-using-your-r-package">Version 2: Using Your R Package</a></li>
+          <li><a href="#improving-your-r-package">Improving Your R Package</a></li>
+          <li><a href="#tips">Tips</a></li>
+          </ul></li>
+          <li><a href="#parameterized-rmd-reports">Parameterized Rmd Reports</a>
+          <ul>
+          <li><a href="#adding-parameters">Adding Parameters</a></li>
+          <li><a href="#version-3-parameterize-your-rmd">Version 3: Parameterize Your Rmd</a></li>
+          </ul></li>
+          <li><a href="#rmd-customizations">Rmd Customizations</a></li>
+          <li><a href="#interactive-plots">Interactive Plots</a></li>
+          <li><a href="#publishing-with-github-pages">Publishing with Github Pages</a></li>
+          </ul>
+        </nav>
+        <ul class="authors">
+          <li class="divider"></li>
+                                <li><span><i class="glyphicon glyphicon-user"></i> Jenna Landy</span></li>
+                                      </ul>     
+      </div>
+      <div class="book-body fixed">
+        <div class="body-inner">
+            <a class="btn pull-left js-toolbar-action toggle-sidebar" aria-label="Toggle Sidebar" title="Toggle Sidebar" href="#">
+              <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </a>
+            <div class="page-inner">
+              <section id="content" class="normal">
+      
+   
+      
+      <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">RStudio & Rmd Hacks</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="Version1.html">Version 1</a>
+      </li>
+      <li>
+        <a href="Version2.html">Version 2</a>
+      </li>
+      <li>
+        <a href="Version3.html">Version 3</a>
+      </li>
+      <li>
+        <a href="Version4.html">Version 4</a>
+      </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container -->
+      </div><!--/.navbar -->
+        
+      <h1 class="title">Remodel Your Rmd</h1>
+         <h1 class="subtitle">Utilizing Rmd and Rstudio in Industry and Academia</h1>
+   
+        
+
+   
+      
+   
+<!-- Don't indent these lines or it will mess pre blocks indentation --> 
+<style type="text/css">
+.book {
+  padding-top: 40px
+}
+</style>
+<p>This tutorial goes through some of the cool things in R and RStudio that I’ve learned and utilized in my experiences in both industry and academia. The number one thing I’ve learned is that there are a lot of very cool things you can do with R, and even though they might sound intimidating and difficult when you first hear about them, they usually end up being very intuitive, well documented, and attainable for anyone to utilize!</p>
+<p>Topics Covered:</p>
+<ul>
+<li>R Package Development</li>
+<li>Parameterized Rmd Reports</li>
+<li>Rmd Customizations</li>
+<li>Interactive Plots</li>
+<li>Publishing with Github Pages</li>
+</ul>
+<div id="version-1-your-basic-rmd" class="section level2">
+<h2>Version 1: Your Basic Rmd</h2>
+<p>For demonstrations sake, we’re going to start with <code>Version1.Rmd</code> and remodel it step by step. This very simple Rmd looks at the iris dataset, performs some data manipulation, and shows some plots.</p>
+<p>Until very recently, every Rmd I made looked a little like Version 1. I would have some text, some code, and knit it using the default everything. The plots may look reasonably nice, and the code may work, but it’s not the best Rmd it could be. The following tips and tricks will be especially useful if you need to use the functions defined in your Rmd in other files or on other people’s computers, if you need to recompile your Rmd with different subsets of the data or with some additional pre-processing, if you need to share your results with collaborators who may or may not code, or if you’d like to publish your results publicly.</p>
+</div>
+<div id="r-package-development" class="section level1">
+<h1>R Package Development</h1>
+<p><strong>Why a package?</strong></p>
+<ol style="list-style-type: decimal">
+<li>Consolidating functions and constants used for a given research project</li>
+<li>Roxygen to look up your functions documentation later (<code>?my_function</code>)</li>
+<li>Unit testing</li>
+<li>Easy interplay with version control (git/GitHub) for collaboration and sharing</li>
+</ol>
+<p>We’re going to start by focusing on the scenario where you need to use the functions defined in your Rmd in other files or on other people’s computers. My old solution to this was to use one Rproject for every project I worked on, so I could source functions from Rscripts. This worked well, but then my research got bigger, and I wanted to have separate Rprojects for different aspects: testing my work on simulation studies, testing my work on real data, etc. Also, I found myself needing to use functions that I had written so long ago that I didn’t know what file it was defined in and had to look deep into the code to remember what each parameter did. Some of this might’ve just been me having messy code, but no matter how clean your code is, consolidating it into an R package can make your life a little easier.</p>
+<p>As a demonstration, I’ll go through the steps to develop the very simple <code>irisproject</code> R package. This package will create functions for each of the data manipulation steps done in <code>Version1.Rmd</code>. This would be useful if the researcher wanted to be able to perform the same data manipulation steps in other Rmds or scripts, if they wanted to add unit tests for each function, if they wanted to collaborate on these functions over GitHub (though they might not necessarily want to share their Rmd), or if they wanted these functions to be publicly a avilable as an R package.</p>
+<div id="basic-steps" class="section level2">
+<h2>Basic Steps</h2>
+<ol style="list-style-type: decimal">
+<li><p>File &gt; New Project</p></li>
+<li><p>Select directory, then that you want to create an R package</p></li>
+<li><p>Set package name &gt; Create Project <img src="images/rpackage-1.png" width="40%" style="display: block; margin: auto;" /></p></li>
+<li><p>Create an Rscript in the <code>R/</code> directory and add functions and/or constants <img src="images/rpackage-2.png" width="50%" style="display: block; margin: auto;" /></p></li>
+<li><p>Build your package with <code>devtools::build()</code>, or navigate to the Build pane and More &gt; Clean and Rebuild <img src="images/rpackage-3.png" width="40%" style="display: block; margin: auto;" /></p></li>
+</ol>
+<p>Now your package is ready to use!</p>
+</div>
+<div id="version-2-using-your-r-package" class="section level2">
+<h2>Version 2: Using Your R Package</h2>
+<p>Now in <code>Version2.Rmd</code> we can load our <code>irispackage</code> and use the functions from the package for the data manipulation steps. The first time you use your package, you’ll need to run <code>install.packages</code>, but after that is done once you’ll run <code>update.packages</code> to make sure you load the latest version.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;./irisproject/&quot;</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">repos=</span><span class="cn">NULL</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">type=</span><span class="st">&quot;source&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(irisproject)</span></code></pre></div>
+</div>
+<div id="improving-your-r-package" class="section level2">
+<h2>Improving Your R Package</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Roxygen documentation</strong><br />
+With your curser inside of a function, navigate to Code &gt; Insert Roxygen Skeleton. This will give the outline for documentation that you can fill in with your function’s description, parameter descriptions, what is returned, and examples. You can also choose to export the function (i.e. allow it to be accessed when someone loads the package) or not (i.e. keep private or helper functions hidden).<br />
+<img src="images/rpackage-4.png" width="60%" style="display: block; margin: auto;" /> Once the Roxygen skeletons are filled in, you can run <code>devtools::document()</code> to build the documentation <code>man/</code> files. Rebuild the package once more after this, and then you should be able to see the documentation with <code>?my_function</code>.<br />
+<img src="images/rpackage-5.png" width="40%" style="display: block; margin: auto;" /></li>
+<li><strong>Unit tests</strong><br />
+The unit tests are run using the <code>testthat</code> package. The tests are stored in the <code>tests/testthat</code> folder. New tests can be added to the existing test files, or a new file can be created manually or with <code>usethis::use_test('testname')</code>.<br />
+<img src="images/rpackage-6.png" width="40%" style="display: block; margin: auto;" /> There are many of these <code>expect_</code> functions, including inequalities like <code>expect_gt()</code> (greater than), logic checks like <code>expect_true()</code>, and side-effect checks like <code>expect_error()</code>. A full list of these functions can be found in the <a href="https://testthat.r-lib.org/reference/"><code>testthat</code> Documentation</a>.<br />
+To run the unit tests, navigate to the Build pane, and click More &gt; Test Package. The pane will update to show you the results of your tests. <img src="images/rpackage-7.png" width="40%" style="display: block; margin: auto;" /></li>
+<li><strong>Upload to GitHub</strong></li>
+</ol>
+</div>
+<div id="tips" class="section level2">
+<h2>Tips</h2>
+<ul>
+<li>If you update the package source code, rebuild it.</li>
+<li>If you have another R session open, you need to restart R and <code>update.packages</code> before you can use the most recent version of the package.</li>
+<li>If you use functions from other packages inside your package, it needs to be noted in the <code>NAMESPACE</code> and <code>DESCRIPTION</code> files. Rather than doing this manually:
+<ul>
+<li>In the Roxygen documentation of your function that uses the package, add a line <code>@importFrom package function1 function2 ....</code>. This will update the NAMESPACE when documentation is updated.</li>
+<li>Run <code>usethis::use_package('package')</code> in the console. This will update the DESCRIPTION file, which checks these dependencies upon package installation.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="parameterized-rmd-reports" class="section level1">
+<h1>Parameterized Rmd Reports</h1>
+<p><strong>Why parameterize?</strong></p>
+<ol style="list-style-type: decimal">
+<li>You can recompile your Rmd with different specifications without changing your code, for example:
+<ul>
+<li>Specify input file</li>
+<li>Working with different subsets of data (specific time period, subset of groups, excluding outliers, etc.)<br />
+</li>
+<li>Options for additional pre-processing</li>
+<li>Options for what variables, models, plots, etc. to include</li>
+</ul></li>
+<li>Non-coding collaborators can compile their own report with specifications using the user interface instead of looking at code</li>
+</ol>
+<p>Now we’re thinking about whether we may want to re-compile an Rmd with new data, new options, new reprocessing steps, etc. The obvious solution is to change your code and knit the Rmd again. But what if you want to go back to the old settings? What if you want a third set of settings? A forth? Changing the code can get tedious very quickly. Also, a collaborator who may not know how to code might want to re-knit your Rmd with an updated data file or their own specifications. This is a case for parameterized R markdown files!</p>
+<div id="adding-parameters" class="section level2">
+<h2>Adding Parameters</h2>
+<p>Parameters can be specified in the YAML header of an Rmd file. These can be standard R types, like strings and booleans, or R objects expressed with a <code>!r</code> prefix.</p>
+</div>
+<div id="version-3-parameterize-your-rmd" class="section level2">
+<h2>Version 3: Parameterize Your Rmd</h2>
+<p><img src="images/parameterized-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Within the Rmd, when you want to access these parameters, you have to refer to them with a <code>params$</code> prefix, like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>params<span class="sc">$</span>package_location</span></code></pre></div>
+<p>If you knit the file with the Knit button, the parameters specified in the YAML will be used. Alternatively, you can specify parameters with:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Version3.Rmd&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> <span class="fu">list</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">package_location =</span> <span class="st">&quot;./irisproject&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">convert_cm =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot_pairs_of =</span> <span class="fu">c</span>(<span class="st">&quot;Sepal.Length&quot;</span>,<span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>You can also click Knit &gt; Knit with Parameters, and a user interface will pop up to allow you to change the standard R type parameters in a way that doesn’t require coding knowledge.</p>
+<p><img src="images/parameterized-2.png" style="width:40.0%" /> <img src="images/parameterized-3.png" style="width:40.0%" /></p>
+</div>
+</div>
+<div id="rmd-customizations" class="section level1">
+<h1>Rmd Customizations</h1>
+<p><strong>Why customize?</strong></p>
+<ol start="2" style="list-style-type: decimal">
+<li>share your results with collaborators who may or may not code</li>
+</ol>
+</div>
+<div id="interactive-plots" class="section level1">
+<h1>Interactive Plots</h1>
+<p><strong>Why interactive?</strong></p>
+<ol style="list-style-type: decimal">
+<li>share your results with collaborators who may or may not code</li>
+<li>or if you’d like to publish your results publicly.</li>
+</ol>
+</div>
+<div id="publishing-with-github-pages" class="section level1">
+<h1>Publishing with Github Pages</h1>
+<p><strong>Why publish?</strong></p>
+<ol style="list-style-type: decimal">
+<li>to publish your results publicly.</li>
+</ol>
+</div>
+
+   
+   
+           </section>
+  </div>
+  </div>
+  </div>
+  </div>
+      
+      
+
+  <script>
+    $(document).ready(function () {
+
+		// add bootstrap table styles to pandoc tables
+	$('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+		
+ 		
+	    });
+  </script>
+
+
+
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+	document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  
+</body>
+</html>
