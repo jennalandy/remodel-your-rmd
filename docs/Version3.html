@@ -246,7 +246,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">RStudio & Rmd Hacks</a>
+      <a class="navbar-brand" href="index.html">Remodel Your Rmd</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -297,20 +297,20 @@ library(irisproject)
 library(dplyr)
 library(ggplot2)</code></pre>
 <pre class="r"><code>head(iris)</code></pre>
-<pre><code>##   Sepal.Length  Sepal.Width Petal.Length Petal.Width Species Length.Ratio Width.Ratio
-## 1 4.209616e-07 2.888952e-07 1.155581e-07 1.65083e-08  setosa     3.642857       17.50
-## 2 4.044533e-07 2.476245e-07 1.155581e-07 1.65083e-08  setosa     3.500000       15.00
-## 3 3.879450e-07 2.641328e-07 1.073039e-07 1.65083e-08  setosa     3.615385       16.00
-## 4 3.796909e-07 2.558786e-07 1.238122e-07 1.65083e-08  setosa     3.066667       15.50
-## 5 4.127075e-07 2.971494e-07 1.155581e-07 1.65083e-08  setosa     3.571429       18.00
-## 6 4.457241e-07 3.219118e-07 1.403205e-07 3.30166e-08  setosa     3.176471        9.75
+<pre><code>##   Sepal.Length  Sepal.Width Petal.Length  Petal.Width Species Length.Ratio Width.Ratio
+## 1 3.017023e-10 2.070506e-10 8.282023e-11 1.183146e-11  setosa     3.642857       17.50
+## 2 2.898708e-10 1.774719e-10 8.282023e-11 1.183146e-11  setosa     3.500000       15.00
+## 3 2.780393e-10 1.893034e-10 7.690450e-11 1.183146e-11  setosa     3.615385       16.00
+## 4 2.721236e-10 1.833876e-10 8.873596e-11 1.183146e-11  setosa     3.066667       15.50
+## 5 2.957865e-10 2.129663e-10 8.282023e-11 1.183146e-11  setosa     3.571429       18.00
+## 6 3.194494e-10 2.307135e-10 1.005674e-10 2.366292e-11  setosa     3.176471        9.75
 ##   Circumference
-## 1  1.322490e-06
-## 2  1.270628e-06
-## 3  1.218765e-06
-## 4  1.192834e-06
-## 5  1.296559e-06
-## 6  1.400283e-06</code></pre>
+## 1  9.478256e-10
+## 2  9.106560e-10
+## 3  8.734863e-10
+## 4  8.549015e-10
+## 5  9.292408e-10
+## 6  1.003580e-09</code></pre>
 <p>Data manipulation steps:</p>
 <ul>
 <li>Convert measurements from centemeters to inches</li>
@@ -326,19 +326,19 @@ iris &lt;- iris %&gt;%
   compute_circumference()</code></pre>
 <pre class="r"><code>head(iris)</code></pre>
 <pre><code>##   Sepal.Length  Sepal.Width Petal.Length  Petal.Width Species Length.Ratio Width.Ratio
-## 1 1.718211e-07 1.179164e-07 4.716657e-08 6.738081e-09  setosa     3.642857       17.50
-## 2 1.650830e-07 1.010712e-07 4.716657e-08 6.738081e-09  setosa     3.500000       15.00
-## 3 1.583449e-07 1.078093e-07 4.379753e-08 6.738081e-09  setosa     3.615385       16.00
-## 4 1.549759e-07 1.044403e-07 5.053561e-08 6.738081e-09  setosa     3.066667       15.50
-## 5 1.684520e-07 1.212855e-07 4.716657e-08 6.738081e-09  setosa     3.571429       18.00
-## 6 1.819282e-07 1.313926e-07 5.727369e-08 1.347616e-08  setosa     3.176471        9.75
+## 1 1.231438e-10 8.451044e-11 3.380417e-11 4.829168e-12  setosa     3.642857       17.50
+## 2 1.183146e-10 7.243752e-11 3.380417e-11 4.829168e-12  setosa     3.500000       15.00
+## 3 1.134854e-10 7.726668e-11 3.138959e-11 4.829168e-12  setosa     3.615385       16.00
+## 4 1.110709e-10 7.485210e-11 3.621876e-11 4.829168e-12  setosa     3.066667       15.50
+## 5 1.207292e-10 8.692502e-11 3.380417e-11 4.829168e-12  setosa     3.571429       18.00
+## 6 1.303875e-10 9.416877e-11 4.104793e-11 9.658336e-12  setosa     3.176471        9.75
 ##   Circumference
-## 1  5.397918e-07
-## 2  5.186235e-07
-## 3  4.974552e-07
-## 4  4.868710e-07
-## 5  5.292076e-07
-## 6  5.715443e-07</code></pre>
+## 1  3.868676e-10
+## 2  3.716963e-10
+## 3  3.565250e-10
+## 4  3.489394e-10
+## 5  3.792819e-10
+## 6  4.096245e-10</code></pre>
 <p>Pairs plot of select variables</p>
 <pre class="r"><code>plot_pairs_of &lt;- strsplit(params$plot_pairs_of, &quot;,&quot;)[[1]] %&gt;% trimws()</code></pre>
 <p>Variables included:</p>

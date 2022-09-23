@@ -1,7 +1,7 @@
-name: "RStudio & Rmd Hacks"
+name: "Remodel Your Rmd"
 output_dir: "docs"
 navbar:
-  title: "RStudio & Rmd Hacks"
+  title: "Remodel Your Rmd"
   left:
     - text: "Home"
       href: "index.html"

@@ -1,8 +1,9 @@
 ---
 title: "Resources"
 author: "Jenna Landy"
-date: "9/23/2022"
 output: html_document
+output: 
+  rmdformats::robobook
 ---
 
 **R Package Development**
