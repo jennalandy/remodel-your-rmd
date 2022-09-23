@@ -297,20 +297,20 @@ library(irisproject)
 library(dplyr)
 library(ggplot2)</code></pre>
 <pre class="r"><code>head(iris)</code></pre>
-<pre><code>##   Sepal.Length  Sepal.Width Petal.Length  Petal.Width Species Length.Ratio Width.Ratio
-## 1 1.572441e-05 1.079126e-05 4.316506e-06 6.166437e-07  setosa     3.642857       17.50
-## 2 1.510777e-05 9.249655e-06 4.316506e-06 6.166437e-07  setosa     3.500000       15.00
-## 3 1.449113e-05 9.866299e-06 4.008184e-06 6.166437e-07  setosa     3.615385       16.00
-## 4 1.418280e-05 9.557977e-06 4.624828e-06 6.166437e-07  setosa     3.066667       15.50
-## 5 1.541609e-05 1.109959e-05 4.316506e-06 6.166437e-07  setosa     3.571429       18.00
-## 6 1.664938e-05 1.202455e-05 5.241471e-06 1.233287e-06  setosa     3.176471        9.75
+<pre><code>##   Sepal.Length  Sepal.Width Petal.Length Petal.Width Species Length.Ratio Width.Ratio
+## 1 4.209616e-07 2.888952e-07 1.155581e-07 1.65083e-08  setosa     3.642857       17.50
+## 2 4.044533e-07 2.476245e-07 1.155581e-07 1.65083e-08  setosa     3.500000       15.00
+## 3 3.879450e-07 2.641328e-07 1.073039e-07 1.65083e-08  setosa     3.615385       16.00
+## 4 3.796909e-07 2.558786e-07 1.238122e-07 1.65083e-08  setosa     3.066667       15.50
+## 5 4.127075e-07 2.971494e-07 1.155581e-07 1.65083e-08  setosa     3.571429       18.00
+## 6 4.457241e-07 3.219118e-07 1.403205e-07 3.30166e-08  setosa     3.176471        9.75
 ##   Circumference
-## 1  4.939970e-05
-## 2  4.746246e-05
-## 3  4.552522e-05
-## 4  4.455659e-05
-## 5  4.843108e-05
-## 6  5.230557e-05</code></pre>
+## 1  1.322490e-06
+## 2  1.270628e-06
+## 3  1.218765e-06
+## 4  1.192834e-06
+## 5  1.296559e-06
+## 6  1.400283e-06</code></pre>
 <p>Data manipulation steps:</p>
 <ul>
 <li>Convert measurements from centemeters to inches</li>
@@ -326,19 +326,19 @@ iris &lt;- iris %&gt;%
   compute_circumference()</code></pre>
 <pre class="r"><code>head(iris)</code></pre>
 <pre><code>##   Sepal.Length  Sepal.Width Petal.Length  Petal.Width Species Length.Ratio Width.Ratio
-## 1 6.418128e-06 4.404598e-06 1.761839e-06 2.516913e-07  setosa     3.642857       17.50
-## 2 6.166437e-06 3.775369e-06 1.761839e-06 2.516913e-07  setosa     3.500000       15.00
-## 3 5.914746e-06 4.027061e-06 1.635993e-06 2.516913e-07  setosa     3.615385       16.00
-## 4 5.788900e-06 3.901215e-06 1.887685e-06 2.516913e-07  setosa     3.066667       15.50
-## 5 6.292282e-06 4.530443e-06 1.761839e-06 2.516913e-07  setosa     3.571429       18.00
-## 6 6.795665e-06 4.907980e-06 2.139376e-06 5.033826e-07  setosa     3.176471        9.75
+## 1 1.718211e-07 1.179164e-07 4.716657e-08 6.738081e-09  setosa     3.642857       17.50
+## 2 1.650830e-07 1.010712e-07 4.716657e-08 6.738081e-09  setosa     3.500000       15.00
+## 3 1.583449e-07 1.078093e-07 4.379753e-08 6.738081e-09  setosa     3.615385       16.00
+## 4 1.549759e-07 1.044403e-07 5.053561e-08 6.738081e-09  setosa     3.066667       15.50
+## 5 1.684520e-07 1.212855e-07 4.716657e-08 6.738081e-09  setosa     3.571429       18.00
+## 6 1.819282e-07 1.313926e-07 5.727369e-08 1.347616e-08  setosa     3.176471        9.75
 ##   Circumference
-## 1  2.016314e-05
-## 2  1.937243e-05
-## 3  1.858172e-05
-## 4  1.818637e-05
-## 5  1.976779e-05
-## 6  2.134921e-05</code></pre>
+## 1  5.397918e-07
+## 2  5.186235e-07
+## 3  4.974552e-07
+## 4  4.868710e-07
+## 5  5.292076e-07
+## 6  5.715443e-07</code></pre>
 <p>Pairs plot of select variables</p>
 <pre class="r"><code>plot_pairs_of &lt;- strsplit(params$plot_pairs_of, &quot;,&quot;)[[1]] %&gt;% trimws()</code></pre>
 <p>Variables included:</p>
