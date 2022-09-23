@@ -6,7 +6,7 @@ navbar:
     - text: "Home"
       href: "index.html"
     - text: "Resources"
-      href: "Resources.Rmd"
+      href: "Resources.html"
     - text: "Version 1"
       href: "Version1.html"
     - text: "Version 2"
