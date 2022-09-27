@@ -14,6 +14,26 @@ knitr::opts_chunk$set(echo = FALSE)
 .book {
   padding-top: 40px
 }
+
+.book .book-body .page-inner section.normal h1, .book .book-body .page-inner section.normal h2, .book .book-body .page-inner section.normal h3, .book .book-body .page-inner section.normal h4 {
+  padding-top: 40px
+}
+```
+
+```{r, echo = FALSE}
+library(png)
+library(grid)
+library(gridExtra)
+combine_pngs <- function(imgs, n = length(imgs), ncol = n, caption = NULL){
+  imgs_rendered = list()
+  for (i in 1:n) {
+    imgs_rendered[[i]] <-  grid::rasterGrob(
+      as.raster(readPNG(imgs[i])), 
+      interpolate = FALSE
+    )
+  }
+  rlang::exec(grid.arrange, !!!imgs_rendered, ncol = ncol, bottom = caption)
+}
 ```
 
 Through my experiences in industry and academia, I’ve learned that a lot of cool things can be done with R and RStudio. Even though they often intimidated me at first, they always ended up being intuitive, well documented, and very useful to my R workflow. In this tutorial I’ll go through how I’ve “remodeled my Rmd”--and how you can do the same--by developing simple R packages for research projects, parameterizing R Markdowns for modular reports, making pretty R Markdowns, and publishing to R Markdown websites and Shiny Apps.
@@ -193,29 +213,202 @@ knitr::include_graphics("images/parameterized-6.png")
 1. Make your results as pretty as possible before sharing
 2. Make your resulting HTML file easy to navigate
 
-# Interactive Plots
-**Why interactive?**
+## Version 4: Customize Your Rmd
 
-1. Make your results as useful as possible before sharing
-2. Questions can be answered more quickly with interactive results, for example:
-    - Which observation is that outlier?
-    - Can we zoom in on the section with a lot of overlapping points?
-    - Can we look at only a particular range of x values?
+## Themes
 
-# Publishing with Github Pages
+The easiest way to make your Rmd pretty is to change its theme or format. There are lots of R packages that provide themes and formats, including [rmdformats](https://juba.github.io/rmdformats/), which provides the `robobook` format, and [prettydoc](https://prettydoc.statr.me/themes.html), which provides the `architect`, `cayman`, and `lenoids` themes, which are presented below.
+
+```{r, echo = FALSE}
+combine_pngs(
+  c(
+    'images/customize-1-architect.png',
+    'images/customize-1-cayman.png',
+    'images/customize-1-leonids.png',
+    'images/customize-1-robobook.png'
+  ),
+  caption = 'Themes (left to right): architect, cayman, leonids, robobook'
+)
+```
+
+To change the theme or format of your Rmd, simply update the output argument in the YAML header. For instance, to use a `prettydoc` theme, the header will look like this:
+```
+output:
+  prettydoc::htmlpretty:
+    theme: cayman
+```
+Alternatively, to use a `rmdformats` format, the header will look like this:
+```
+output:
+  rmdformats::robobook
+```
+
+We use the `robobook` theme in `Version4.Rmd`. I like this one because it adds a simple sidebar table of contents.
+
+## Tabs
+
+Subsections can be change from vertically ordered sections to tabs that a user can toggle between. This is done by adding a CSS class attribute to the section header -- which is a lot easier than it sounds. Adding tabs is as simple as adding `{.tabset}` after your header.
+
+```
+# Section {.tabset}
+
+## First Tab Name
+
+first tab contents
+
+## Second Tab Name
+
+second tab contents
+```
+
+This markdown produces the following HTML:
+
+```{r out.width = '70%', fig.align = 'center'}
+knitr::include_graphics("images/customize-2.png")
+```  
+
+In `Version4.Rmd`, we put the data manipulation steps into separate tabs with descriptions of each step. We also use tabs to separate the two sections of "setup": loading packages and printing parameter inputs. For these tabs, we also add the `.tabset-fade` and `.tabset-pills` CSS classes for further customization
+
+```{r out.width = '70%', fig.align = 'center'}
+knitr::include_graphics("images/customize-3.png")
+```  
+
+## Kable Tables
+
+Displaying your data or results in a visually pleasing way can make your Rmd look more professional and more interesting! `knitr`, the same package that lets you knit an Rmd and has functions to include images, exports the `kable` function that makes data tables look a lot nicer. It also allows for the option to round all numeric columns with the `digits` parameter.
+
+In `Version4.Rmd`, we use `kable` to display pretty tables with values rounded to 3 decimal places.
+
+```{r out.width = '50%', fig.align = 'center'}
+knitr::include_graphics("images/customize-4.png")
+``` 
+
+## Interactive Plots Directly from `ggplot2`
+
+Interactive plots are useful because some questions can be answered more quickly with interactive results, for example:
+
+- Which observation is that outlier?
+- Can we zoom in on the section with a lot of overlapping points?
+- Can we look at only a particular range of x values?
+
+There are a lot of packages that allow interactive plotting, including [plotly ](https://plotly.com/r/) and [leaflet](https://rstudio.github.io/leaflet/). They allow a lot of options for customization and create great plots, but it can take some time to learn their syntaxes. However, if you already have a `ggplot2` figure, you can very simply convert it to be interactive with the `ggplotly` function exported from the `plotly` package.
+
+With this function, interactive plotting only adds one line of code on top of your existing `ggplot` call.
+
+```{r, eval = FALSE, echo = TRUE}
+library(ggplot2)
+library(plotly)
+
+p <- ggplot2::ggplot(...)
+plotly::ggplotly(p)
+```
+
+In `Version4.Rmd`, we make the plot at the end interactive. Below I show a simplified version that just passes the `ggplot2` object to `ggplotly`.
+
+```{r, echo = FALSE, message = FALSE}
+update.packages(
+  './irisproject',
+  repos=NULL,
+  type="source"
+)
+
+library(irisproject)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+
+iris <- iris %>%
+  convert_measurements(1:4) %>%
+  compute_ratios() %>%
+  compute_circumference()
+```
+
+```{r echo = TRUE}
+p <- iris %>% ggplot(aes(
+  x = Circumference, 
+  y = Length.Ratio, 
+  color = Species
+)) +
+  geom_point() +
+  theme_classic() +
+  theme(
+    legend.position = 'top',
+    legend.justification = 'left'
+  )
+
+plotly::ggplotly(p)
+```
+
+The more customized version shows code to add a custom tooltip with the `text` aesthetic in ggplot and the `tooltip` parameter in `ggplotly`. It also shows how to put the legend at the top of the plot instead of to the side, sinceplotly tends to cover up part of the legend.
+
+```{r echo = TRUE}
+p <- iris %>% ggplot(aes(
+  x = Circumference, 
+  y = Length.Ratio, 
+  color = Species,
+  text = paste0(
+    "Species: ", Species,
+    "\nCircumference: ", round(Circumference,3),
+    "\nLength Ratio: ", round(Length.Ratio, 3),
+    "\nWidth Ratio: ", round(Width.Ratio, 3),
+    "\nPetal Width, Length: ", round(Petal.Width, 3),
+        ", ", round(Petal.Length, 3),
+    "\nSepal Width, Length: ", round(Sepal.Width, 3),
+        ", ", round(Sepal.Length, 3)
+  )
+)) +
+  geom_point() +
+  theme_classic() +
+  theme(
+    legend.position = 'top',
+    legend.justification = 'left'
+  )
+
+plotly::ggplotly(p, tooltip = c("text")) %>%
+  plotly::layout(
+    legend = list(
+      orientation = "h",
+      x = 0,
+      yanchor = "bottom",
+      y = 1.02
+    )
+  )
+```
+
+
+# Publishing with GitHub Pages
 **Why publish?**
 
 1. Make your work publicly accessible (such as this tutorial!)
 2. Share a web address with collaborators instead of a large number of files. Access can be limited to those with read access to GitHub repository.
 
+Making a website has always seemed intimidating to me, but finally I realized that with a few Rmds that output to HTMLs, I was already 90% of the way there. To flesh out your website, all that's needed is two new files: `_site.yml` and `index.html`.
+
+The `_site.yml` document will hold the name of your website, the directory you want it to be built for, and then information for the navigation system. If you want to publish to a public GitHub pages website (instructions below), the `output_dir` *must* be `"docs"`, or GitHub won't look in the right place for your website files.
+
+```{r out.width = '60%', fig.align = 'center'}
+knitr::include_graphics("images/github_pages-3.png")
+```  
+
+The `index.Rmd` document will hold your home page. You can also rename an existing Rmd to `"index"` if you already have a homepage.
+
+```{r out.width = '80%', fig.align = 'center'}
+knitr::include_graphics("images/github_pages-4.png")
+```  
+
+To build your website, type the following into your console:
+
+```{r eval = FALSE, echo = TRUE}
+rmarkdown::render_site()
+```
+
+To publish on Github, first upload your full project directory to a GitHub repository. If you have GitHub pro, you can have a public webpage from a private GitHub repository, but otherwise, the repository must be public. Note that regardless of the visibility status of your repository, **the webpage WILL BE PUBLIC BY DEFAULT**. See GitHubs page on [changing the visibility of your site](https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site) if you need a private site.
+
+Once your project is on GitHub, navigate to `Settings > Pages`. Select your git branch (usually `"master"`) to deploy from, select to build from the `"/docs"` folder, and click save. You should then see at the top that "your site is live at ...".
 
 ```{r out.width = '40%', fig.align = 'center'}
 knitr::include_graphics("images/github_pages-1.png")
 ```  
 
-
-```{r out.width = '40%', fig.align = 'center'}
-knitr::include_graphics("images/github_pages-2.png")
-```  
-
+The site will automatically update whenever you push changes to GitHub. Make sure you rebuild the site after every change to an Rmd!
 

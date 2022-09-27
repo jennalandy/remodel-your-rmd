@@ -9,6 +9,10 @@ output:
 .book {
   padding-top: 40px
 }
+
+.book .book-body .page-inner section.normal h1, .book .book-body .page-inner section.normal h2, .book .book-body .page-inner section.normal h3, .book .book-body .page-inner section.normal h4 {
+  padding-top: 40px
+}
 ```
 
 ## R Package Development
