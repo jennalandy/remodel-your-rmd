@@ -386,7 +386,7 @@ Making a website has always seemed intimidating to me, but finally I realized th
 
 The `_site.yml` document will hold the name of your website, the directory you want it to be built for, and then information for the navigation system. If you want to publish to a public GitHub pages website (instructions below), the `output_dir` *must* be `"docs"`, or GitHub won't look in the right place for your website files.
 
-```{r out.width = '60%', fig.align = 'center'}
+```{r out.width = '40%', fig.align = 'center'}
 knitr::include_graphics("images/github_pages-3.png")
 ```  
 
@@ -406,7 +406,7 @@ To publish on Github, first upload your full project directory to a GitHub repos
 
 Once your project is on GitHub, navigate to `Settings > Pages`. Select your git branch (usually `"master"`) to deploy from, select to build from the `"/docs"` folder, and click save. You should then see at the top that "your site is live at ...".
 
-```{r out.width = '40%', fig.align = 'center'}
+```{r out.width = '80%', fig.align = 'center'}
 knitr::include_graphics("images/github_pages-1.png")
 ```  
 

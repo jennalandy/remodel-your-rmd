@@ -289,13 +289,13 @@ $(document).ready(function () {
 <pre class="r"><code>library(ggplot2)
 library(dplyr)</code></pre>
 <pre class="r"><code>head(iris)</code></pre>
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Length.Ratio Width.Ratio Circumference
-## 1    0.8496460   0.5830904    0.2332362  0.03331945  setosa     3.642857       17.50      2.669242
-## 2    0.8163265   0.4997918    0.2332362  0.03331945  setosa     3.500000       15.00      2.564565
-## 3    0.7830071   0.5331112    0.2165764  0.03331945  setosa     3.615385       16.00      2.459889
-## 4    0.7663474   0.5164515    0.2498959  0.03331945  setosa     3.066667       15.50      2.407551
-## 5    0.8329863   0.5997501    0.2332362  0.03331945  setosa     3.571429       18.00      2.616904
-## 6    0.8996252   0.6497293    0.2832153  0.06663890  setosa     3.176471        9.75      2.826256</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length  Petal.Width Species Length.Ratio Width.Ratio Circumference
+## 1  0.009284103 0.006371443  0.002548577 0.0003640825  setosa     3.642857       17.50    0.02916687
+## 2  0.008920021 0.005461237  0.002548577 0.0003640825  setosa     3.500000       15.00    0.02802307
+## 3  0.008555938 0.005825320  0.002366536 0.0003640825  setosa     3.615385       16.00    0.02687927
+## 4  0.008373897 0.005643278  0.002730619 0.0003640825  setosa     3.066667       15.50    0.02630737
+## 5  0.009102062 0.006553485  0.002548577 0.0003640825  setosa     3.571429       18.00    0.02859497
+## 6  0.009830227 0.007099608  0.003094701 0.0007281649  setosa     3.176471        9.75    0.03088257</code></pre>
 <p>Data manipulation steps:</p>
 <ol style="list-style-type: decimal">
 <li>Convert measurements from centemeters to inches</li>
@@ -310,13 +310,13 @@ r &lt;- iris$Sepal.Length*(iris$Sepal.Length &gt; iris$Petal.Length) +
      iris$Petal.Length*(iris$Petal.Length &gt;= iris$Sepal.Length)
 iris$Circumference &lt;- 2*pi*r</code></pre>
 <pre class="r"><code>head(iris)</code></pre>
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Length.Ratio Width.Ratio Circumference
-## 1    0.3345063   0.2295631   0.09182526  0.01311789  setosa     3.642857       17.50      2.101765
-## 2    0.3213884   0.1967684   0.09182526  0.01311789  setosa     3.500000       15.00      2.019343
-## 3    0.3082705   0.2098863   0.08526631  0.01311789  setosa     3.615385       16.00      1.936921
-## 4    0.3017116   0.2033274   0.09838420  0.01311789  setosa     3.066667       15.50      1.895710
-## 5    0.3279473   0.2361221   0.09182526  0.01311789  setosa     3.571429       18.00      2.060554
-## 6    0.3541831   0.2557989   0.11150210  0.02623579  setosa     3.176471        9.75      2.225398</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length  Petal.Width Species Length.Ratio Width.Ratio Circumference
+## 1  0.003655159 0.002508442 0.0010033769 0.0001433396  setosa     3.642857       17.50    0.02296604
+## 2  0.003511819 0.002150093 0.0010033769 0.0001433396  setosa     3.500000       15.00    0.02206541
+## 3  0.003368480 0.002293433 0.0009317071 0.0001433396  setosa     3.615385       16.00    0.02116478
+## 4  0.003296810 0.002221763 0.0010750467 0.0001433396  setosa     3.066667       15.50    0.02071447
+## 5  0.003583489 0.002580112 0.0010033769 0.0001433396  setosa     3.571429       18.00    0.02251572
+## 6  0.003870168 0.002795121 0.0012183862 0.0002866791  setosa     3.176471        9.75    0.02431698</code></pre>
 <p>Pairs plot of all variables</p>
 <pre class="r"><code>pairs(iris)</code></pre>
 <p><img src="Version1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
