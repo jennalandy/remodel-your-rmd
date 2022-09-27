@@ -306,6 +306,8 @@ plotly::ggplotly(p)
 In `Version4.Rmd`, we make the plot at the end interactive. Below I show a simplified version that just passes the `ggplot2` object to `ggplotly`.
 
 ```{r, echo = FALSE, message = FALSE}
+rm(list = c('iris'))
+
 update.packages(
   './irisproject',
   repos=NULL,

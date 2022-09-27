@@ -1,4 +1,4 @@
-CM_PER_INCH <- 2.45
+CM_PER_INCH <- 2.54
 
 #' Convert Measurements from cm to in
 #'
