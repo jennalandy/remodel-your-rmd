@@ -1,5 +1,5 @@
 ---
-title: "Remodel Your Rmd: \nUtilizing Rmd and Rstudio in Industry and Academia"
+title: "Remodel Your Rmd: \nUtilizing Rmd and RStudio in Industry and Academia"
 author: "Jenna Landy"
 output: 
   rmdformats::robobook
@@ -37,7 +37,7 @@ combine_pngs <- function(imgs, n = length(imgs), ncol = n, caption = NULL){
 
 Through my experiences in industry and academia, I’ve learned that a lot of cool things can be done with R and RStudio. Even though they often intimidated me at first, they always ended up being intuitive, well documented, and very useful to my R workflow. In this tutorial I’ll go through how I’ve “remodeled my Rmd”--and how you can do the same--by developing simple R packages for research projects, parameterizing R Markdowns for modular reports, making pretty R Markdowns, and publishing to R Markdown websites and Shiny Apps.
 
-All these topics have been covered many times over by blog posts, textbooks, and stackoverflow. My goal for this tutorial is to show **how much the smallest changes can improve your workflow and final product**. The adjustments from `Version1.Rmd` to `Version4.Rmd` can be take less than 20 minutes. Even developing an R package for your project can be done in less than five minutes and, in the case of the small package developed in this tutorial, in only 15 lines of code.
+All these topics have been covered many times over by blog posts, textbooks, and stack overflow. My goal for this tutorial is to show **how much the smallest changes can improve your workflow and final product**. The adjustments from `Version1.Rmd` to `Version4.Rmd` can take less than 20 minutes. Even developing an R package for your project can be done in less than five minutes and, in the case of the small package developed in this tutorial, in only 15 lines of code.
 
 Compare Version 1 to Version 4 to see the amount of improvement you can make!
 
@@ -56,10 +56,10 @@ Topics Covered:
 
 # Navigating this Tutorial
 
-- Use the table of contents on the left hand side to go through tutorial sections with written explanations, screenshots, and example code. 
+- Use the table of contents on the left-hand side to go through tutorial sections with written explanations, screenshots, and example code. 
 - Toggle through Versions 1-4 in the navigation bar up top to see examples of these "remodels" in action. 
 - Explore external resources linked in the resources tab of the navigation bar. 
-- View the github [source code](https://github.com/jennalandy/remodel-your-rmd) to see the exact code that generated this tutorial.
+- View the GitHub [source code](https://github.com/jennalandy/remodel-your-rmd) to see the exact code that generated this tutorial.
 
 # Starting Point
 ## Version 1: Your Basic Rmd
@@ -73,25 +73,25 @@ Until very recently, every Rmd I made looked a little like Version 1. I would ha
 **Why a package?**
 
 1. Consolidating functions and constants used for a given research project
-2. Roxygen to look up your functions documentation later (`?my_function`)
+2. Roxygen to look up your functions' documentations later (`?my_function`)
 3. Unit testing
 4. Easy interplay with version control (git/GitHub) for collaboration and sharing
 
-We're going to start by focusing on the scenario where you need to use the functions defined in your Rmd in other files or on other people's computers. My old solution to this was to use one Rproject for every project I worked on, so I could source functions from Rscripts. This worked well, but then my research got bigger, and I wanted to have separate Rprojects for different aspects: testing my work on simulation studies, testing my work on real data, etc. Also, I found myself needing to use functions that I had written so long ago that I didn't know what file it was defined in and had to look deep into the code to remember what each parameter did. Some of this might've just been me having messy code, but no matter how clean your code is, consolidating it into an R package can make your life a little easier.
+We're going to start by focusing on the scenario where you need to use the functions defined in your Rmd in other files or on other people's computers. My old solution to this was to use one Rproject for every project I worked on, so I could source functions from R scripts. This worked well, but then my research got bigger, and I wanted to have separate Rprojects for different aspects: testing my work on simulation studies, testing my work on real data, etc. Also, I found myself needing to use functions that I had written so long ago that I didn't know what file it was defined in and had to look deep into the code to remember what each parameter did. Some of this might've just been me having messy code, but no matter how clean your code is, consolidating it into an R package can make your life a little easier.
 
-As a demonstration, I'll go through the steps to develop the very simple `irisproject` R package. This package will create functions for each of the data manipulation steps done in `Version1.Rmd`. This would be useful if the researcher wanted to be able to perform the same data manipulation steps in other Rmds or scripts, if they wanted to add unit tests for each function, if they wanted to collaborate on these functions over GitHub (though they might not necessarily want to share their Rmd), or if they wanted these functions to be publicly a avilable as an R package.
+As a demonstration, I'll go through the steps to develop the very simple `irisproject` R package. This package will contain functions for each of the data manipulation steps in `Version1.Rmd`. This would be useful if the researcher wanted to be able to perform the same data manipulation steps in other Rmds or scripts, if they wanted to add unit tests for each function, if they wanted to collaborate on these functions over GitHub (though they might not necessarily want to share their Rmd), or if they wanted these functions to be publicly available as an R package.
 
 ## Basic Steps
 
-1. File > New Project
-2. Select directory, then that you want to create an R package
-3. Set package name > Create Project
+1. `File` > `New Project`
+2. Select a directory, then select that you want to create an R package
+3. Set package name > `Create Project`
 ```{r out.width = '40%', fig.align = 'center'}
 knitr::include_graphics("images/rpackage-1.png")
 ```
 
 
-4. Create an Rscript in the `R/` directory and add functions and/or constants
+4. Create an R script in the `R/` directory and add functions and/or constants
 ```{r out.width = '50%', fig.align = 'center'}
 knitr::include_graphics("images/rpackage-2.png")
 ```
@@ -120,7 +120,7 @@ library(irisproject)
 ## Improving Your R Package
 
 ### Roxygen documentation 
-   With your curser inside of a function, navigate to Code > Insert Roxygen Skeleton. This will give the outline for documentation that you can fill in with your function's description, parameter descriptions, what is returned, and examples. You can also choose to export the function (i.e. allow it to be accessed when someone loads the package) or not (i.e. keep private or helper functions hidden).  
+   With your cursor inside of a function, navigate to Code > Insert Roxygen Skeleton. This will give the outline for documentation that you can fill in with your function's description, parameter descriptions, what is returned, and examples. You can also choose to export the function (i.e. allow it to be accessed when someone loads the package) or not (i.e. keep private or helper functions hidden).  
 ```{r out.width = '60%', fig.align = 'center'}
 knitr::include_graphics("images/rpackage-4.png")
 ```   
@@ -161,13 +161,13 @@ knitr::include_graphics("images/rpackage-7.png")
     - Options for what variables, models, plots, etc. to include
 2. Non-coding collaborators can compile their own report with specifications using the user interface instead of looking at code
 
-Now we're thinking about whether we may want to re-compile an Rmd with new data, new options, new reprocessing steps, etc. The obvious solution is to change your code and knit the Rmd again. But what if you want to go back to the old settings? What if you want a third set of settings? A forth? Changing the code can get tedious very quickly. Also, a collaborator who may not know how to code might want to re-knit your Rmd with an updated data file or their own specifications. This is a case for parameterized R markdown files!
+Now we're thinking about whether we may want to re-compile an Rmd with new data, new options, new reprocessing steps, etc. The obvious solution is to change your code and knit the Rmd again. But what if you want to go back to the old settings? What if you want a third set of settings? A fourth? Changing the code can get tedious very quickly. Also, a collaborator who may not know how to code might want to re-knit your Rmd with an updated data file or their own specifications. This is a case for parameterized R markdown files!
 
 Parameters can be specified in the YAML header of an Rmd file. These can be standard R types, like strings and booleans, or R objects expressed with a `!r` prefix.
 
 ## Version 3: Parameterize Your Rmd
 
-In `Version3.Rmd`, you'll see  the first change on line 4 of the notebook: adding the `params` option to the YAML header. For the iris analysis example, we'll parameterized the location of the project's package, the option to convert inches to centimeters, and what variables to include in the pairs plot, which for just this version we'll reduce down to the three new variables and the species.
+In `Version3.Rmd`, you'll see the first change on line 4 of the notebook: adding the `params` option to the YAML header. For the iris analysis example, we'll parameterized the location of the project's package, the option to convert inches to centimeters, and what variables to include in the pairs plot, which for just this version we'll reduce to the three new variables and the species.
 
 ```{r out.width = '70%', fig.align = 'center'}
 knitr::include_graphics("images/parameterized-1.png")
@@ -206,7 +206,7 @@ knitr::include_graphics("images/parameterized-3.png")
 ## Improving Your Parameterization
 
 ### 1. Make user interface more intuitive for non-coding collaborators  
-In the image above, we see that this user interface isn't as pretty as it could be. Further, we can't change the `plot_pairs_of` in the user interface because it is an R object. We can add additional specifications `label` and `value` in the YAML header that will make the user interface more intuitive. We can also change the `plot_pairs_of` variable to a string of comma-separated variable names, and deal with converting it to a list in the code later. This last step may not be necessary if you're parameterizing an Rmd for yourself, but it can be useful if someone who doesnt know R may be using it later.  
+In the image above, we see that this user interface isn't as pretty as it could be. Further, we can't change the `plot_pairs_of` in the user interface because it is an R object. We can add additional specifications `label` and `value` in the YAML header that will make the user interface more intuitive. We can also change the `plot_pairs_of` variable to a string of comma-separated variable names, and deal with converting it to a list in the code later. This last step may not be necessary if you're parameterizing an Rmd for yourself, but it can be useful if someone who doesn't know R may be using it later.  
 ```{r out.width = '50%', fig.align = 'center'}
 knitr::include_graphics("images/parameterized-4.png")
 ```  
@@ -217,8 +217,8 @@ knitr::include_graphics("images/parameterized-5.png")
 ### 2. Using parameters in markdown  
   Parameters (or R code in general) can be incorporated into markdown in two different ways. 
 
-1. First, inline R code can be used to have markdown text depend on parameters. Here are two examples, for which you would swap the single quotes for backticks
-    a. 'r if(params\$convert_cm) {"- Convert measurements from centemeters to inches"}'
+1. First, inline R code can be used to have markdown text depend on parameters. Here are two examples, for which you would swap the single quotes for back ticks
+    a. 'r if(params\$convert_cm) {"- Convert measurements from centimeters  to inches"}'
     b. The package location is 'r params\$package_location'
 2. Second, you can utilize the function the `knitr::asis_output` function to produce markdown text from within a code chunk. For this, you'll want to make sure the results are displayed as is, and the code itself is not shown in the knitted version.
 ```{r out.width = '40%', fig.align = 'center'}
@@ -362,7 +362,7 @@ p <- iris %>% ggplot(aes(
 plotly::ggplotly(p)
 ```
 
-The more customized version shows code to add a custom tooltip with the `text` aesthetic in ggplot and the `tooltip` parameter in `ggplotly`. It also shows how to put the legend at the top of the plot instead of to the side, sinceplotly tends to cover up part of the legend.
+The more customized version shows code to add a custom tooltip with the `text` aesthetic in ggplot and the `tooltip` parameter in `ggplotly`. It also shows how to put the legend at the top of the plot instead of to the side, since plotly tends to cover up part of the legend.
 
 ```{r echo = TRUE}
 p <- iris %>% ggplot(aes(
@@ -425,7 +425,7 @@ To build your website, type the following into your console:
 rmarkdown::render_site()
 ```
 
-To publish on Github, first upload your full project directory to a GitHub repository. If you have GitHub pro, you can have a public webpage from a private GitHub repository, but otherwise, the repository must be public. Note that regardless of the visibility status of your repository, **the webpage WILL BE PUBLIC BY DEFAULT**. See GitHubs page on [changing the visibility of your site](https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site) if you need a private site.
+To publish on Github, first upload your full project directory to a GitHub repository. If you have GitHub pro, you can have a public webpage from a private GitHub repository, but otherwise, the repository must be public. Note that regardless of the visibility status of your repository, **the webpage WILL BE PUBLIC BY DEFAULT**. See GitHub's page on [changing the visibility of your site](https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site) if you need a private site.
 
 Once your project is on GitHub, navigate to `Settings > Pages`. Select your git branch (usually `"master"`) to deploy from, select to build from the `"/docs"` folder, and click save. You should then see at the top that "your site is live at ...".
 

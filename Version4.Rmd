@@ -68,7 +68,7 @@ head(iris) %>%
 # Data Manipulation {.tabset .tabset-fade .tabset-pills}
 
 `r if(params$convert_cm) {"## Convert Measurements"}`
-`r if(params$convert_cm) {"Converting data in first four columns from centemeters to inches"}`
+`r if(params$convert_cm) {"Converting data in first four columns from centimeters  to inches"}`
 ```{r include = params$convert_cm}
 if (params$convert_cm) {
   iris <- iris %>%

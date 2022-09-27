@@ -41,7 +41,7 @@ head(iris)
 
 Data manipulation steps:
 
-`r if(params$convert_cm) {"- Convert measurements from centemeters to inches"}`
+`r if(params$convert_cm) {"- Convert measurements from centimeters to inches"}`
 - Compute two ratio features: ratio of lengths (sepal : petal) and ratio of widths (sepal : petal)
 - Create a new feature: circumference of the smallest circle that could circumscribe the flower (using the larger length as the radius).
 
