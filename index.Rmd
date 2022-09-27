@@ -1,6 +1,5 @@
 ---
-title: "Remodel Your Rmd"
-subtitle: "Utilizing Rmd and Rstudio in Industry and Academia"
+title: "Remodel Your Rmd: Utilizing Rmd and Rstudio in Industry and Academia"
 author: "Jenna Landy"
 output: 
   rmdformats::robobook
@@ -38,6 +37,8 @@ combine_pngs <- function(imgs, n = length(imgs), ncol = n, caption = NULL){
 
 Through my experiences in industry and academia, I’ve learned that a lot of cool things can be done with R and RStudio. Even though they often intimidated me at first, they always ended up being intuitive, well documented, and very useful to my R workflow. In this tutorial I’ll go through how I’ve “remodeled my Rmd”--and how you can do the same--by developing simple R packages for research projects, parameterizing R Markdowns for modular reports, making pretty R Markdowns, and publishing to R Markdown websites and Shiny Apps.
 
+Compare Version 1 to Version 4 to see the amount of improvement you can make! In practice, I'd probably also hide code, but I show it for the purpose of this tutorial.
+
 Topics Covered:
 
 - R Package Development
@@ -48,11 +49,20 @@ Topics Covered:
 
 [View Source Code Here!](https://github.com/jennalandy/remodel-your-rmd)
 
+# Navigating this Tutorial
+
+- Use the table of contents on the left hand side to go through tutorial sections with written explanations, screenshots, and example code. 
+- Toggle through Versions 1-4 in the navigation bar up top to see examples of these "remodels" in action. 
+- Explore external resources linked in the resources tab of the navigation bar. 
+- View the github [source code](https://github.com/jennalandy/remodel-your-rmd) to see the exact code that generated this tutorial.
+
+# Starting Point
 ## Version 1: Your Basic Rmd
 
 For demonstrations sake, we're going to start with `Version1.Rmd` and remodel it step by step. This very simple Rmd looks at the iris dataset, performs some data manipulation, and shows some plots.
 
 Until very recently, every Rmd I made looked a little like Version 1. I would have some text, some code, and knit it using the default everything. The plots may look reasonably nice, and the code may work, but it's not the best Rmd it could be. The following tips and tricks will be especially useful if you need to use the functions defined in your Rmd in other files or on other people's computers, if you need to recompile your Rmd with different subsets of the data or with some additional pre-processing, if you need to share your results with collaborators who may or may not code, or if you'd like to publish your results publicly.
+
 
 # R Package Development
 **Why a package?**
@@ -135,6 +145,7 @@ knitr::include_graphics("images/rpackage-7.png")
   - In the Roxygen documentation of your function that uses the package, add a line `@importFrom package function1 function2 ....`. This will update the NAMESPACE when documentation is updated.
   - Run `usethis::use_package('package')` in the console. This will update the DESCRIPTION file, which checks these dependencies upon package installation.
 
+
 # Parameterized Rmd Reports
 **Why parameterize?**
 
@@ -209,6 +220,7 @@ knitr::include_graphics("images/parameterized-5.png")
 knitr::include_graphics("images/parameterized-6.png")
 ```  
 
+
 # Rmd Customizations
 **Why customize?**
 
@@ -216,6 +228,8 @@ knitr::include_graphics("images/parameterized-6.png")
 2. Make your resulting HTML file easy to navigate
 
 ## Version 4: Customize Your Rmd
+
+Moving from Version 3 to 4, we will add a new theme to make our Rmd pretty and to include a table of contents, add tabs for easier navigation of sections, use kable tables to display data in a nicer way, and make our plots interactive with as little as one added line of code.
 
 ## Themes
 
