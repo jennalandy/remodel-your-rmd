@@ -1,0 +1,41 @@
+
+R version 4.0.4 (2021-02-15) -- "Lost Library Book"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # This file is part of the standard setup for testthat.
+> # It is recommended that you do not modify it.
+> #
+> # Where should you do additional test configuration?
+> # Learn more about the roles of various files in:
+> # * https://r-pkgs.org/tests.html
+> # * https://testthat.r-lib.org/reference/test_package.html#special-files
+> 
+> library(testthat)
+> library(irisproject)
+> 
+> test_check("irisproject")
+[ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+
+══ Failed tests ════════════════════════════════════════════════════════════════
+── Failure (test-irisproject.R:4:3): convert_measurements works ────────────────
+my_dat$x (`actual`) not equal to c(1, 2, 3)/2.45 (`expected`).
+
+  `actual`: 0.39 0.79 1.18
+`expected`: 0.41 0.82 1.22
+
+[ FAIL 1 | WARN 0 | SKIP 0 | PASS 0 ]
+Error: Test failures
+Execution halted

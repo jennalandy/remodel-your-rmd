@@ -12,7 +12,7 @@ params:
     value: TRUE
   plot_pairs_of: 
     label: "Variables to Include in Pairs Plot (comma separated):"
-    value: "Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, Length.Ratio, Width.Ratio, Circumference, Species"
+    value: "Length.Ratio, Width.Ratio, Circumference, Species"
     input: text
 ---
 

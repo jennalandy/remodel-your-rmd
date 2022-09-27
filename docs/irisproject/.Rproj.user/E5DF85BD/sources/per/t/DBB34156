@@ -3,7 +3,7 @@
     "path": "~/Desktop/remodel-your-rmd/irisproject/R/data_manipulation.R",
     "project_path": "R/data_manipulation.R",
     "type": "r_source",
-    "hash": "364811728",
+    "hash": "2964782780",
     "contents": "",
     "dirty": false,
     "created": 1663784190393.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "28,0",
-        "scrollLine": "0"
+        "cursorPosition": "42,30",
+        "scrollLine": "5"
     },
     "folds": "",
-    "lastKnownWriteTime": 1664304653,
+    "lastKnownWriteTime": 1664305325,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1664304653,
+    "last_content_update": 1664305325929,
     "read_only": false,
     "read_only_alternatives": []
 }

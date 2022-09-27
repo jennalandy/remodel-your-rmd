@@ -40,6 +40,6 @@ compute_ratios <- function(dataframe) {
 compute_circumference <- function(dataframe) {
   r <- dataframe$Sepal.Length*(dataframe$Sepal.Length > dataframe$Petal.Length) +
        dataframe$Petal.Length*(dataframe$Petal.Length >= dataframe$Sepal.Length)
-  dataframe$Circumference <- 1*pi*r
+  dataframe$Circumference <- 2*pi*r
   return(dataframe)
 }

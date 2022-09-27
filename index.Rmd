@@ -46,6 +46,8 @@ Topics Covered:
 - Interactive Plots
 - Publishing R Markdown Websites with Github Pages
 
+[View Source Code Here!](https://github.com/jennalandy/remodel-your-rmd)
+
 ## Version 1: Your Basic Rmd
 
 For demonstrations sake, we're going to start with `Version1.Rmd` and remodel it step by step. This very simple Rmd looks at the iris dataset, performs some data manipulation, and shows some plots.
@@ -149,7 +151,7 @@ Parameters can be specified in the YAML header of an Rmd file. These can be stan
 
 ## Version 3: Parameterize Your Rmd
 
-In `Version3.Rmd`, you'll see  the first change on line 4 of the notebook: adding the `params` option to the YAML header. For the iris analysis example, we'll parameterized the location of the project's package, the option to convert inches to centimeters, and what variables to include in the pairs plot.
+In `Version3.Rmd`, you'll see  the first change on line 4 of the notebook: adding the `params` option to the YAML header. For the iris analysis example, we'll parameterized the location of the project's package, the option to convert inches to centimeters, and what variables to include in the pairs plot, which for just this version we'll reduce down to the three new variables and the species.
 
 ```{r out.width = '70%', fig.align = 'center'}
 knitr::include_graphics("images/parameterized-1.png")
