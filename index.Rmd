@@ -1,5 +1,5 @@
 ---
-title: "Remodel Your Rmd: Utilizing Rmd and Rstudio in Industry and Academia"
+title: "Remodel Your Rmd: \nUtilizing Rmd and Rstudio in Industry and Academia"
 author: "Jenna Landy"
 output: 
   rmdformats::robobook
@@ -37,14 +37,19 @@ combine_pngs <- function(imgs, n = length(imgs), ncol = n, caption = NULL){
 
 Through my experiences in industry and academia, I’ve learned that a lot of cool things can be done with R and RStudio. Even though they often intimidated me at first, they always ended up being intuitive, well documented, and very useful to my R workflow. In this tutorial I’ll go through how I’ve “remodeled my Rmd”--and how you can do the same--by developing simple R packages for research projects, parameterizing R Markdowns for modular reports, making pretty R Markdowns, and publishing to R Markdown websites and Shiny Apps.
 
-Compare Version 1 to Version 4 to see the amount of improvement you can make! In practice, I'd probably also hide code, but I show it for the purpose of this tutorial.
+All these topics have been covered many times over by blog posts, textbooks, and stackoverflow. My goal for this tutorial is to show **how much the smallest changes can improve your workflow and final product**. The adjustments from `Version1.Rmd` to `Version4.Rmd` can be take less than 20 minutes. Even developing an R package for your project can be done in less than five minutes and, in the case of the small package developed in this tutorial, in only 15 lines of code.
+
+Compare Version 1 to Version 4 to see the amount of improvement you can make!
 
 Topics Covered:
 
 - R Package Development
 - Parameterized Rmd Reports
 - Rmd Customizations
-- Interactive Plots
+    - Themes
+    - Tabs
+    - Kable Tables
+    - Interactive Plots Directly from `ggplot2`
 - Publishing R Markdown Websites with Github Pages
 
 [View Source Code Here!](https://github.com/jennalandy/remodel-your-rmd)
@@ -429,4 +434,16 @@ knitr::include_graphics("images/github_pages-1.png")
 ```  
 
 The site will automatically update whenever you push changes to GitHub. Make sure you rebuild the site after every change to an Rmd!
+
+# What's Next?
+
+There are still a lot of things I'd like to learn about Rmarkdown and RStudio. Here are a few things I may add to this tutorial in the future:
+
+- [Sweve for reproducible research](https://support.rstudio.com/hc/en-us/articles/200552056-Using-Sweave-and-knitr)
+- [Bibliographies in an Rmd](https://bookdown.org/yihui/rmarkdown-cookbook/bibliography.html)
+- [Custom CSS in Rmd](https://bookdown.org/yihui/rmarkdown-cookbook/html-css.html)
+
+
+
+
 
