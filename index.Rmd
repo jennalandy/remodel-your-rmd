@@ -1,5 +1,5 @@
 ---
-title: "Remodel Your Rmd: \nUtilizing Rmd and RStudio in Industry and Academia"
+title: "Remodel Your Rmd: \nUtilizing Rmd and RStudio in Industry and Research"
 author: "Jenna Landy"
 output: 
   rmdformats::robobook
@@ -35,7 +35,7 @@ combine_pngs <- function(imgs, n = length(imgs), ncol = n, caption = NULL){
 }
 ```
 
-Through my experiences in industry and academia, I’ve learned that a lot of cool things can be done with R and RStudio. Even though they often intimidated me at first, they always ended up being intuitive, well documented, and very useful to my R workflow. In this tutorial I’ll go through how I’ve “remodeled my Rmd”--and how you can do the same--by developing simple R packages for research projects, parameterizing R Markdowns for modular reports, making pretty R Markdowns, and publishing to R Markdown websites.
+Through my experiences in industry and research, I’ve learned that a lot of cool things can be done with R and RStudio. Even though they often intimidated me at first, they always ended up being intuitive, well documented, and very useful to my R workflow. In this tutorial I’ll go through how I’ve “remodeled my Rmd”--and how you can do the same--by developing simple R packages for research projects, parameterizing R Markdowns for modular reports, making pretty R Markdowns, and publishing to R Markdown websites.
 
 All these topics have been covered many times over by blog posts, textbooks, and stack overflow. My goal for this tutorial is to show **how much the smallest changes can improve your workflow and final product**. The adjustments from `Version1.Rmd` to `Version4.Rmd` can take less than 20 minutes. Even developing an R package for your project can be done in less than five minutes and, in the case of the small package developed in this tutorial, in only 15 lines of code.
 
@@ -46,7 +46,7 @@ Topics Covered:
 - R Package Development
 - Parameterized Rmd Reports
 - Rmd Customizations
-    - Themes
+    - Themes and Formats
     - Tabs
     - Kable Tables
     - Interactive Plots Directly from `ggplot2`
@@ -236,7 +236,7 @@ knitr::include_graphics("images/parameterized-6.png")
 
 Moving from Version 3 to 4, we will add a new theme to make our Rmd pretty and to include a table of contents, add tabs for easier navigation of sections, use kable tables to display data in a nicer way, and make our plots interactive with as little as one added line of code.
 
-## Themes
+## Themes and Formats
 
 The easiest way to make your Rmd pretty is to change its theme or format. There are lots of R packages that provide themes and formats, including [rmdformats](https://juba.github.io/rmdformats/), which provides the `robobook` format, and [prettydoc](https://prettydoc.statr.me/themes.html), which provides the `architect`, `cayman`, and `lenoids` themes, which are presented below.
 

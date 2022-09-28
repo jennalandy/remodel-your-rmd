@@ -36,6 +36,12 @@ library(ggplot2)
 ```
 
 ```{r}
+for (p in names(params)) {
+  print(paste0(p, ': ', params[[p]]))
+}
+```
+
+```{r}
 head(iris)
 ```
 

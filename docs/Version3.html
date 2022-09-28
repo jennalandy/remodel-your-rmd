@@ -296,6 +296,12 @@ update.packages(
 library(irisproject)
 library(dplyr)
 library(ggplot2)</code></pre>
+<pre class="r"><code>for (p in names(params)) {
+  print(paste0(p, &#39;: &#39;, params[[p]]))
+}</code></pre>
+<pre><code>## [1] &quot;package_location: ./irisproject/&quot;
+## [1] &quot;convert_cm: TRUE&quot;
+## [1] &quot;plot_pairs_of: Length.Ratio, Width.Ratio, Circumference, Species&quot;</code></pre>
 <pre class="r"><code>head(iris)</code></pre>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
@@ -318,20 +324,13 @@ iris &lt;- iris %&gt;%
   compute_ratios() %&gt;%
   compute_circumference()</code></pre>
 <pre class="r"><code>head(iris)</code></pre>
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Length.Ratio Width.Ratio
-## 1     2.007874    1.377953    0.5511811  0.07874016  setosa     3.642857       17.50
-## 2     1.929134    1.181102    0.5511811  0.07874016  setosa     3.500000       15.00
-## 3     1.850394    1.259843    0.5118110  0.07874016  setosa     3.615385       16.00
-## 4     1.811024    1.220472    0.5905512  0.07874016  setosa     3.066667       15.50
-## 5     1.968504    1.417323    0.5511811  0.07874016  setosa     3.571429       18.00
-## 6     2.125984    1.535433    0.6692913  0.15748031  setosa     3.176471        9.75
-##   Circumference
-## 1      12.61584
-## 2      12.12111
-## 3      11.62637
-## 4      11.37900
-## 5      12.36848
-## 6      13.35795</code></pre>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Length.Ratio Width.Ratio Circumference
+## 1     2.007874    1.377953    0.5511811  0.07874016  setosa     3.642857       17.50      12.61584
+## 2     1.929134    1.181102    0.5511811  0.07874016  setosa     3.500000       15.00      12.12111
+## 3     1.850394    1.259843    0.5118110  0.07874016  setosa     3.615385       16.00      11.62637
+## 4     1.811024    1.220472    0.5905512  0.07874016  setosa     3.066667       15.50      11.37900
+## 5     1.968504    1.417323    0.5511811  0.07874016  setosa     3.571429       18.00      12.36848
+## 6     2.125984    1.535433    0.6692913  0.15748031  setosa     3.176471        9.75      13.35795</code></pre>
 <p>Pairs plot of select variables</p>
 <pre class="r"><code>plot_pairs_of &lt;- strsplit(params$plot_pairs_of, &quot;,&quot;)[[1]] %&gt;% trimws()</code></pre>
 <p>Variables included:</p>
@@ -342,7 +341,7 @@ iris &lt;- iris %&gt;%
 <li>Species</li>
 </ul>
 <pre class="r"><code>pairs(iris[,plot_pairs_of])</code></pre>
-<p><img src="Version3_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="Version3_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Plot of circumference and length ratio by species</p>
 <pre class="r"><code>iris %&gt;% ggplot(aes(
   x = Circumference, 
@@ -355,7 +354,7 @@ iris &lt;- iris %&gt;%
     legend.position = &#39;top&#39;,
     legend.justification = &#39;left&#39;
   )</code></pre>
-<p><img src="Version3_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="Version3_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 
 
 
